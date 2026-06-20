@@ -9,8 +9,8 @@ Fertility Assessment and Crop Recommendation in Sub-Saharan Africa"*
 
 > **Status note:** the conversational RAG-based advisory layer described in the
 > paper (Section 5.5) is a **planned extension and is not yet implemented** in
-> this repository. Everything else described below — the regression, clustering,
-> and classification pipelines, the FastAPI backend, and the React frontend — is
+> this repository. Everything else described below the regression, clustering,
+> and classification pipelines, the FastAPI backend, and the React frontend is
 > implemented and runnable end to end.
 
 ---
@@ -33,7 +33,7 @@ algorithms respectively under a strict **leakage-resistant evaluation protocol**
 (train/test split → preprocessing fitted on training data only → 5-fold CV on the
 training partition only → held-out test evaluation). This is the central
 methodological claim of the accompanying paper, and the training notebooks in
-this repository (`notebooks/`) are provided specifically so that claim can be
+this repository (`Notebooks/`) are provided specifically so that claim can be
 independently verified rather than taken on faith.
 
 ---
@@ -51,7 +51,7 @@ AfriAgri/
 │   └── src/
 │       ├── components/SoilPredictorForm.tsx
 │       └── types/agri.ts
-├── notebooks/                    # Offline training and evaluation (see below)
+├── Notebooks/                    # Offline training and evaluation (see below)
 │   ├── data/
 │   │   ├── SubSaharan_Soil_Fertility_Dataset.csv
 │   │   └── Crop_recommendation.csv
@@ -86,7 +86,7 @@ AfriAgri/
 
 **Model training / evaluation**
 - Jupyter notebooks, pandas, scikit-learn, CatBoost, XGBoost, LightGBM
-- See `notebooks/` for the full leakage-resistant benchmarking pipeline (15
+- See `Notebooks/` for the full leakage-resistant benchmarking pipeline (15
   regression models, 13 classification models, K-Means cluster validation)
 
 ---
@@ -129,14 +129,14 @@ Opens at `http://localhost:3000`. The form calls `http://localhost:8000/api/pred
 ### Reproducing the model training and benchmark results
 
 ```bash
-cd notebooks
+cd Notebooks
 pip install -r requirements-dev.txt   # adds jupyter, matplotlib, seaborn
 jupyter notebook
 ```
 
 Run `soil_regression.ipynb`, `soil_clustering.ipynb`, and
 `crop_recommendation.ipynb`. Each notebook loads its training data directly
-from `notebooks/data/` (`SubSaharan_Soil_Fertility_Dataset.csv` for the
+from `Notebooks/data/` (`SubSaharan_Soil_Fertility_Dataset.csv` for the
 regression and clustering notebooks, `Crop_recommendation.csv` for the
 classification notebook — see the Data Sources section below for schema and
 provenance), implements the full leakage-resistant protocol from scratch
@@ -220,7 +220,7 @@ Africa*, Science 295(5562). The crop recommendation benchmark dataset is from
 [Ingle (2020), Kaggle](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset).
 
 The cleaned, merged CSVs used to train the models are in
-[`notebooks/data/`](notebooks/data/):
+[`Notebooks/data/`](notebooks/data/):
 
 | File | Rows | Used by |
 |---|---|---|
